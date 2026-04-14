@@ -12,7 +12,7 @@ def inserir(nome): #Função inserir nome na fila
         fila_normal.append({"nome": nome, "espera": 0})
         print(f"--{nome} entrou como Normal")
 
-def chamar_proximo(): #Função chamar proximo fila
+def chamar(): #Função chamar proximo fila
     if fila_preferencial:
         paciente = fila_preferencial.popleft()
         print(f"Chamando: {paciente['nome']} (Preferencial)")
@@ -32,7 +32,7 @@ def chamar_proximo(): #Função chamar proximo fila
     while fila_normal and fila_normal[0]["espera"] > 5:
         fila_normal.popleft()
 
-def mostrar_fila(): #Função mostrar fila atual
+def mostrar(): #Função mostrar fila atual
     print("\n--- FILA ATUAL ---")
     for p in fila_preferencial:
         print(f"[{p['nome']} | Pref]")
@@ -51,8 +51,8 @@ while True:
         nome = input("Nome do paciente: ")
         inserir(nome)
     elif opcao == "2":
-        chamar_proximo()
+        chamar()
     elif opcao == "3":
-        mostrar_fila()
+        mostrar()
     elif opcao == "4":
         break
